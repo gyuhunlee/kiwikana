@@ -34,8 +34,10 @@ Status key: `[ ]` not started, `[~]` in progress, `[x]` done.
 - Local content schema, sync from Supabase, media download, content check script.
 - Done when: one N5 deck (20 words, pictures, audio, sentences) is on the phone offline and `npm run check:content` passes.
 
-### M3 Day, bar, streak logic `[ ]` — `specs/day-bar-streak.md`
+### M3 Day, bar, streak logic `[x]` — `specs/day-bar-streak.md`
 - Done when: all DB rules pass.
+- Status: every `[logic]` DB rule has a passing test. Store (`bar.store.ts`) and UI (`Bar.tsx`, `WeekSheet.tsx`) come with M5/M6.
+- Added `DayState.repairRoundNo` (migration 2) to tell the repair round apart. Needs your yes.
 
 ### M4 Word feed logic `[ ]` — `specs/word-feed.md`
 - buildPack, order, answers, undo, deck advance. Simulations.

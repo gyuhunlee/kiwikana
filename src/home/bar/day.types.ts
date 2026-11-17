@@ -12,9 +12,11 @@ export type LogKind =
 
 export interface LogEntry {
   kind: LogKind;
+  /** Word id, kana character, or traced character. */
   id: string;
   correct?: boolean;
-  levelUp?: boolean;
+  /** KN-66: kana that reached Good or Excellent on this answer. */
+  levelUp?: string[];
 }
 
 export interface DayState {
@@ -25,5 +27,7 @@ export interface DayState {
   goalDone: boolean;
   repaired: boolean;
   repairDay: DayKey | null;
+  /** Which round fills `repairDay` (DB-42). Not in the spec's field list; needed to tell the repair round apart. */
+  repairRoundNo: number | null;
   log: LogEntry[];
 }

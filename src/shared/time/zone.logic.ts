@@ -87,3 +87,9 @@ export function fromLocal(localIso: string, timeZone: string): Date {
 export function shiftInstant(instant: Date, ms: number): Date {
   return new Date(instant.getTime() + ms);
 }
+
+export function instantFromIso(iso: string): Date {
+  const instant = new Date(iso);
+  if (Number.isNaN(instant.getTime())) throw new Error(`Not a timestamp: "${iso}"`);
+  return instant;
+}
