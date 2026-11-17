@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { getDb } from '../storage/db';
 import { getSetting, setSetting } from '../storage/settingsRepo';
 import { resetUserState, writeScenario } from '../storage/userStateRepo';
+import { fixtureContent } from '../testing/fixtures';
 import { scenarios } from '../testing/scenarios';
 import { appClock, getClockOffsetMs, setClockOffsetMs } from '../time/appClock';
 import { systemClock } from '../time/clock';
@@ -55,7 +56,8 @@ export const useDevStore = create<DevState>((set) => ({
       set({ status: `Unknown scenario: ${name}` });
       return;
     }
-    await writeScenario(await getDb(), build(appClock));
+    // Stand-in decks until real content is on the phone (M2).
+    await writeScenario(await getDb(), build(appClock, fixtureContent()));
     set({ status: `Loaded scenario: ${name}` });
   },
 

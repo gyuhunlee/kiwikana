@@ -39,17 +39,21 @@ Status key: `[ ]` not started, `[~]` in progress, `[x]` done.
 - Status: every `[logic]` DB rule has a passing test. Store (`bar.store.ts`) and UI (`Bar.tsx`, `WeekSheet.tsx`) come with M5/M6.
 - Added `DayState.repairRoundNo` (migration 2) to tell the repair round apart. Needs your yes.
 
-### M4 Word feed logic `[ ]` — `specs/word-feed.md`
+### M4 Word feed logic `[~]` — `specs/word-feed.md`
 - buildPack, order, answers, undo, deck advance. Simulations.
 - Done when: all WF rules pass and `test:sim` matches the expected tables.
+- Done: `pack.logic` (build + order), `answer.logic`, `deck-advance.logic`, `src/decks/word-actions.logic` (WF-40 to WF-42). Tests pass for WF-3 to WF-51 using a stand-in scheduler (`src/shared/testing/fakeScheduler.ts`).
+- Left: run `fsrs.logic.test.ts` (WF-1 to WF-3) against the real `ts-fsrs`; it was written without being run. `pack.sim.test.ts` (WF-60 to WF-65) and `npm run sim:report`. `words.store.ts`.
+- Gap I filled, needs your yes: a word that was Learned but never quizzed (its pack was dropped at 4 AM) counts as strong and due, so it is not lost.
 
 ### M5 Home Words screen `[ ]` — `specs/word-card.md`
 - Top bar, dropdown sheet, bar, new card, quiz card, audio, tap-a-word popup, slide, look back, undo toast.
 - Done when: scenarios `fresh`, `day6`, `bar-9` behave as the spec says on a phone.
 
-### M6 Rewards and streak sheet `[ ]` — `specs/rewards.md`, `specs/day-bar-streak.md`
+### M6 Rewards and streak sheet `[~]` — `specs/rewards.md`, `specs/day-bar-streak.md`
 - Summary card, deck complete card, week sheet, repair. End states first, animation in M11.
 - Done when: scenarios `bar-9`, `deck-last-word`, `missed-yesterday` behave as the spec says.
+- Done: `queue.logic`, `summary.logic` (RW-1 to RW-13), week cells and repair (in M3). Left: `RewardCard.tsx`, `WeekSheet.tsx`, the phone check.
 
 ### M7 Widgets `[ ]` — `specs/widgets.md`
 - Snapshot writer (logic + tests), 4 home widgets, 5 lock widgets, notification, reload triggers.
