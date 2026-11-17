@@ -1,0 +1,42 @@
+{
+  "name": "kiwi-kana",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start --dev-client",
+    "ios": "expo run:ios",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test:changed": "vitest run --changed --passWithNoTests --exclude \"**/*.sim.test.ts\"",
+    "test:logic": "vitest run --passWithNoTests --exclude \"**/*.sim.test.ts\"",
+    "test:sim": "vitest run --passWithNoTests .sim.test.ts",
+    "test:coverage-ids": "node scripts/coverage-ids.mjs",
+    "check:content": "tsx scripts/check-content.ts",
+    "test": "tsc --noEmit && eslint . && npm run test:logic && npm run test:sim && npm run check:content"
+  },
+  "dependencies": {
+    "@expo-google-fonts/dm-sans": "^0.4.0",
+    "@expo-google-fonts/zen-maru-gothic": "^0.4.0",
+    "expo": "~58.0.0",
+    "expo-constants": "~58.0.0",
+    "expo-dev-client": "~58.0.0",
+    "expo-font": "~58.0.0",
+    "expo-linking": "~58.0.0",
+    "expo-router": "~58.0.0",
+    "expo-sqlite": "~58.0.0",
+    "react": "^19.2.0",
+    "react-native": "~0.88.0",
+    "react-native-safe-area-context": "^5.0.0",
+    "react-native-screens": "^4.0.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.2.0"
+  }
+}
