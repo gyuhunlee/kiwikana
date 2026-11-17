@@ -40,3 +40,12 @@ export function weekdayShort(key: DayKey): string {
 export function weekdayLong(key: DayKey): string {
   return WEEKDAYS_LONG[weekdayIndex(key)] ?? '';
 }
+
+/** Whole days from `from` to `to` (positive when `to` is later). */
+export function daysBetween(from: DayKey, to: DayKey): number {
+  const utc = (key: DayKey): number => {
+    const [year = 0, month = 1, day = 1] = key.split('-').map(Number);
+    return Date.UTC(year, month - 1, day);
+  };
+  return Math.round((utc(to) - utc(from)) / MS_PER_DAY);
+}
